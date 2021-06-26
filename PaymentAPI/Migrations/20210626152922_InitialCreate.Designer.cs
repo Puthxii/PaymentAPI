@@ -9,23 +9,23 @@ using PaymentAPI.Models;
 namespace PaymentAPI.Migrations
 {
     [DbContext(typeof(PaymentDetailContext))]
-    [Migration("20210626091414_InitialCreate")]
+    [Migration("20210626152922_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.7")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("PaymentAPI.Models.PaymentDetail", b =>
                 {
                     b.Property<int>("PaymentDetailId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CardNumber")
                         .HasColumnType("nvarchar(16)");
